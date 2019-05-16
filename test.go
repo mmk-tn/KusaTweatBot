@@ -16,6 +16,7 @@ func main() {
 		fmt.Println("Error loading env file.")
 	}
 	url := os.Getenv("github_url")
+	html := getSvgHTML(url)
 
-	fmt.Println("Get Data:", getSvgHTML(url))
+	html2svg(html, "Kusa.svg")
 }
