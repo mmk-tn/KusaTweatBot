@@ -1,2 +1,2 @@
-# KusaTweatBot
+# KusaTweetBot
 草つぶやく。
