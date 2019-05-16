@@ -17,7 +17,7 @@ func loadEnv() {
 	}
 }
 
-func tweat() {
+func tweet() {
 	loadEnv()
 
 	anaconda.SetConsumerKey(os.Getenv("consumer_key"))
@@ -29,7 +29,7 @@ func tweat() {
 	if err != nil {
 		fmt.Println("Error occured: ", err)
 	} else {
-		fmt.Println("Tweat Message:", tweet.Text)
+		fmt.Println("Tweet Message:", tweet.Text)
 	}
 }
 
@@ -46,7 +46,7 @@ func encode() string {
 	return base64.StdEncoding.EncodeToString(data)
 }
 
-func tweatWithImage() {
+func tweetWithImage() {
 	loadEnv()
 
 	anaconda.SetConsumerKey(os.Getenv("consumer_key"))
@@ -60,10 +60,10 @@ func tweatWithImage() {
 
 	v := url.Values{}
 	v.Add("media_ids", media.MediaIDString)
-	tweet, err := api.PostTweet("Tweat with a image from anaconda.", v)
+	tweet, err := api.PostTweet("Tweet with a image from anaconda.", v)
 	if err != nil {
 		fmt.Println("Error occured: ", err)
 	} else {
-		fmt.Println("Tweat Message:", tweet.Text)
+		fmt.Println("Tweet Message:", tweet.Text)
 	}
 }

@@ -1,6 +1,6 @@
 package main
 
 func main() {
-	// tweat()
-	tweatWithImage()
+	// tweet()
+	tweetWithImage()
 }
