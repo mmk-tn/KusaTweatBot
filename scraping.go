@@ -13,11 +13,7 @@ func getSvgHTML(url string) string {
 		return ""
 	}
 
-	svgHTML := ""
-	doc.Find(".js-calendar-graph").Each(func(_ int, s *goquery.Selection) {
-		html, _ := s.Html()
-		svgHTML += html
-	})
+	svgHTML, _ := doc.Find(".js-calendar-graph").Html()
 
 	return svgHTML
 }

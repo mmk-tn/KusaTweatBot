@@ -9,8 +9,6 @@ import (
 )
 
 func main() {
-	// tweet()
-	// tweetWithImage()
 
 	// Get SVG Data
 	err := godotenv.Load()
@@ -28,4 +26,7 @@ func main() {
 	if err2 != nil {
 		fmt.Println("Error convert svg to png")
 	}
+
+	// Tweet Create Image
+	tweetWithImage("Tweet from KusaTweetBot", "Kusa.png")
 }
