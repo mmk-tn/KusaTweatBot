@@ -4,16 +4,23 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
+	"time"
 
 	"github.com/joho/godotenv"
 )
 
 func main() {
+	// Set Logging
+	stdout, stderr, err := initOut("./log/", "KusaTweetBot")
+	if err != nil {
+		fmt.Fprintf(stderr, "Can't creata file: %v\n", err)
+	}
+	fmt.Fprintf(stdout, "%s - Start KusaTweetBot.\n", time.Now())
 
 	// Get SVG Data
-	err := godotenv.Load()
+	err = godotenv.Load()
 	if err != nil {
-		fmt.Println("Error loading env file.")
+		fmt.Fprintln(stderr, "Error loading env file.")
 	}
 	url := os.Getenv("github_url")
 	html := getSvgHTML(url)
@@ -22,11 +29,13 @@ func main() {
 	html2svg(html, "Kusa.svg")
 
 	// Convert SVG to PNG
-	err2 := exec.Command("cairosvg", "-f", "png", "-o", "Kusa.png", "Kusa.svg").Run()
-	if err2 != nil {
-		fmt.Println("Error convert svg to png")
+	err = exec.Command("cairosvg", "-f", "png", "-o", "Kusa.png", "Kusa.svg").Run()
+	if err != nil {
+		fmt.Fprintln(stderr, "Error convert svg to png.")
 	}
 
 	// Tweet Create Image
 	tweetWithImage("Tweet from KusaTweetBot", "Kusa.png")
+
+	fmt.Fprintf(stdout, "%s - Finish KusaTweetBot.\n", time.Now())
 }
