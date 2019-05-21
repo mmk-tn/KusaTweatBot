@@ -3,3 +3,5 @@
 *.svg
 *.png
 .vscode/settings.json
+*.log
+start.bat
