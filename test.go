@@ -35,7 +35,7 @@ func main() {
 	}
 
 	// Tweet Create Image
-	message := fmt.Sprint("[", time.Now().Format("2006-01-02"), "]", "Tweet from KusaTweetBot!\n", url)
+	message := fmt.Sprint("[", time.Now().Format("2006-01-02"), "]", "by KusaTweetBot\n", url)
 	tweetWithImage(message, "Kusa.png")
 
 	fmt.Fprintf(stdout, "%s - Finish KusaTweetBot.\n", time.Now())
